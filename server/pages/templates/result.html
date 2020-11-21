@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block body %}
+<style>
+  label {
+    display: none;
+}
+#id_image {
+    font-size: 16px;
+    color: #9b9b9b;
+    font-weight: bold;
+    font-family: inherit;
+}
+#file-upload-button{
+    padding: 30px !important
+}
+h1 {
+  font-weight: bolder;
+}
+</style>
+
+<div style="height: 93px; background-color:cadetblue;">
+  <span style="background-color: white; display:inline-block; position:absolute; top:8px; left:55%; padding:14px; border-radius:10px; box-shadow:1px 3px 6px 2px rgba(0, 0, 0, 0.19)">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-info">잡아랏</button>
+    </form>
+  </span>
+</div>
+<div class="container">
+    <div class="mt-4">
+      <div class="mt-4" style="text-align: center; border-top:1px solid #E8E8E8; border-bottom:1px solid #E8E8E8; padding: 13px;">
+        <h1>요청 하신 이미지</h1>
+      </div>
+      <div style="text-align: center;">
+        {% for image in images %}
+        <img src="{{image.image.url}}" class="card-img" alt="..." style="max-width: 300px; margin-top:35px; border:1px solid rgba(0,0,0,.125); border-radius:.25rem">
+        {% endfor %}
+      </div>
+
+    </div>
+    <div class="mt-4" style="text-align: center; border-top:1px solid #E8E8E8; border-bottom:1px solid #E8E8E8; padding: 13px; ">
+        <h1>예측 결과</h1>
+    </div>
+
+    <div class="mt-4">
+        <div class="card-deck">
+            
+            <div class="card" style="height: 375px;">
+              <img style="height: 220px;" src="{{car_1_image}}" class="card-img-top" alt="확인불가로 네이버검색 요망">
+              <div class="card-body" style="padding-top: 3px;">
+                <h5 class="card-title">{{car_1_name}}</h5>
+                <p class="card-text" style="padding-bottom: 3px; margin-bottom:3px;">제조사 {{car_1_producer}}</p>
+                <p class="card-text" style="padding-bottom: 3px;">차종 {{car_1_type}}</p>
+              </div>
+              <div class="card-footer">
+                <a href="{{car_1_detail}}">
+                  <small class="text-muted">링크이동</small>
+                </a>
+              </div>
+            </div>
+
+            <div class="card" style="height: 375px;">
+              <img style="height: 220px;" src="{{car_2_image}}" class="card-img-top" alt="확인불가로 네이버검색 요망">
+              <div class="card-body" style="padding-top: 3px;">
+                <h5 class="card-title">{{car_2_name}}</h5>
+                <p class="card-text" style="padding-bottom: 3px; margin-bottom:3px;">제조사 {{car_2_producer}}</p>
+                <p class="card-text" style="padding-bottom: 3px;">차종 {{car_2_type}}</p>
+              </div>
+              <div class="card-footer">
+                <a href="{{car_2_detail}}">
+                  <small class="text-muted">링크이동</small>
+                </a>
+              </div>
+            </div>
+
+            <div class="card" style="height: 375px;">
+              <img style="height: 220px;" src="{{car_3_image}}" class="card-img-top" alt="확인불가로 네이버검색 요망">
+              <div class="card-body" style="padding-top: 3px;">
+                <h5 class="card-title">{{car_3_name}}</h5>
+                <p class="card-text" style="padding-bottom: 3px; margin-bottom:3px;">제조사 {{car_3_producer}}</p>
+                <p class="card-text" style="padding-bottom: 3px;">차종 {{car_3_type}}</p>
+              </div>
+              <div class="card-footer">
+                <a href="{{car_3_detail}}">
+                  <small class="text-muted">링크이동</small>
+                </a>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock %}
